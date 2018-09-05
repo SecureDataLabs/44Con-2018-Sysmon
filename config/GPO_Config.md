@@ -121,13 +121,13 @@ One of the easiest ways to deploy Sysmon is to use Group Policy to add a Startup
 ![GPO_config_13](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_13.png)
 
 
-- On the `Actions` tab set the following values -- Action: Start a program, Settings: Enter the full UNC path for the SysmonStartup.bat file on the SYSVOL share.
+- On the `Actions` tab set the following values -- `Action`: **Start a program**, `Settings`: **Enter the full UNC path for the SysmonStartup.bat file on the SYSVOL share**.
 
 
 ![GPO_config_14](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_14.png)
 
 
-- On the `Settings` tab check the box for 'Allow task to be run on demand'.
+- On the `Settings` tab check the box for `Allow task to be run on demand`.
 
 
 ![GPO_config_15](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_15.png)
