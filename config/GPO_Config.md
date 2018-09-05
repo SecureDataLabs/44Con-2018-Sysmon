@@ -43,13 +43,13 @@
 ![GPO_config_5](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_5.png)
 
 
- - On the window that opens click Browse, Advanced and then Find Now. Scroll down and select the Event Log Readers group and then click OK until the Event Log Readers Properties window is visible.
+ - On the window that opens click `Browse`, `Advanced` and then `Find Now`. Scroll down and select `Event Log Readers` and then click `OK` until the `Event Log Readers properties` window is visible.
 
 
 ![GPO_config_6](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_6.png)
 
 
-- On Event Log Readers Properties click Add then type the below in the window that appears and click OK until you are back at the Group Policy Management console --
+- On the `Event Log Readers properties` click `Add` then type the below snippet in the window that appears and click `OK` until you are back at the Group Policy Management console.
 
 `NT AUTHORITY\\NETWORK SERVICE`
 
