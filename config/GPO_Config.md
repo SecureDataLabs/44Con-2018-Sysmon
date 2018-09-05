@@ -1,25 +1,25 @@
 # Group Policy Object (GPO) Configuration
 ## Windows Event Forwarding (WEF) GPO
 
-On a Domain Controller, open the Group Policy Management console, and create a new GPO named "WEF Policy" and open it for editing. This first part of the GPO defines where hosts should send their logs.
+- On a Domain Controller, open the Group Policy Management console, and create a new GPO named "WEF Policy" and open it for editing. This first part of the GPO defines where hosts should send their logs.
 
-Navigate to:
+  Navigate to:
 
-`Computer Configuration > Policies > Administrative Templates > Windows Components > Event Forwarding`
+  `Computer Configuration > Policies > Administrative Templates > Windows Components > Event Forwarding`
 
 ![GPO_config_1](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_1.png)
 
-Right click on the Configure target Subscription Manager entry and select Edit. Select the Enabled radio button and "Show" next to Subscription Managers in the Options pane.
+- Right click on `Configure target Subscription Manager` and select Edit. Select `Enabled` and click `Show...` next to `SubscriptionManagers` in the Options pane.
 
 ![GPO_config_2](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_2.png)
 
-Enter the following line in for the value substituting the Fully Qualified Domain name of the Windows Event Collector for the \<FQDN\> portion of the URL:
+Enter the following line in for the value substituting the Fully Qualified Domain name of the Windows Event Collector for the `\<FQDN\>` portion of the URL:
 
-Server=http://\<FQDN\>:5985/wsman/SubscriptionManager/WEC,Refresh=120
+`Server=http://\<FQDN\>:5985/wsman/SubscriptionManager/WEC,Refresh=120`
 
 ![GPO_config_3](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_3.png)
 
-Click OK until you are back to the main Group Policy Manager window to apply the configuration. Next we will need to enable the Windows Remote Management Service on the hosts.
+Click `OK` until you are back to the main Group Policy Manager window to apply the configuration. Next we will need to enable the Windows Remote Management Service on the hosts.
 
 Navigate to Computer Configuration \> Windows Settings \> Security Settings \> System Services and right-click the Windows Remote Management service and select Properties. Check the box for 'Define this policy setting' and set Startup Mode to Automatic then click OK to apply the change.
 
