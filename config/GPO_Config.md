@@ -3,7 +3,8 @@
 
 On a Domain Controller, open the Group Policy Management console, and create a new GPO named "WEF Policy" and open it for editing. This first part of the GPO defines where hosts should send their logs.
 
-Navigate to: 
+Navigate to:
+
 `Computer Configuration > Policies > Administrative Templates > Windows Components > Event Forwarding`
 
 ![GPO_config_1](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_1.png)
