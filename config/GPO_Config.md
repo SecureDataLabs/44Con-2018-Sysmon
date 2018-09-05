@@ -37,7 +37,7 @@
 - Now we need to allow event log reader access for the Network Service account which will permit Windows RM to read and send logs.
 
   Navigate to:
-  `Computer Configuration > Policies > Windows Settings > Restricted Groups`. Right-click within the window and select `Add Group`.
+  `Computer Configuration > Policies > Windows Settings > Restricted Groups`. Right-click within the window and select `Add Group...`.
 
 
 ![GPO_config_5](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_5.png)
@@ -51,16 +51,16 @@
 
 - On the `Event Log Readers properties` click `Add` then type the below snippet in the window that appears and click `OK` until you are back at the Group Policy Management console.
 
-`NT AUTHORITY\\NETWORK SERVICE`
+  `NT AUTHORITY\\NETWORK SERVICE`
 
 
 ![GPO_config_7](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_7.png)
 
 
-- The final requirement is to allow Remote Server Management Through WinRM.
+- The final requirement is to allow `Remote Server Management Through WinRM`.
 
   Navigate to:
-  `Computer Configuration > Policies > Administrative Templates > Windows Components > Windows Remote Management (WinRM) > WinRMService`. Right click on Allow Remote Server Management through WinRM and select Edit. Check the Enabled radio button and set the value of IPv4 Filter & IPv6 Filter as \*.
+  `Computer Configuration > Policies > Administrative Templates > Windows Components > Windows Remote Management (WinRM) > WinRMService`. Right click on `Allow Remote Server Management through WinRM` and select `Edit`. Check the `Enabled` button and set the value of IPv4 Filter & IPv6 Filter as `*`.
 
 
 ![GPO_config_8](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_8.png)
@@ -71,25 +71,26 @@
 
 One of the easiest ways to deploy Sysmon is to use Group Policy to add a Startup Script, a Scheduled Task or a combination of both. This is achieved by staging the required installer, configuration and startup script files in a folder in the Domain SYSVOL folder, this ensures the files are readable by all users but can't be changed except by Domain Admins or users who have been given specific permissions.
 
-- The first step is to create a folder called "Sysmon" in replacing \<FQDN\> with your domain name. Then copy the 4 files below into that folder --
+- The first step is to create a folder called **"Sysmon"** in replacing \<FQDN\> with your domain name. Then copy the 4 files below into that folder.
 
-  - Sysmon.exe -- Standard Sysmon installer.
-  - Sysmon64.exe -- 64 bit Sysmon installer.
-  - SysmonStartup.bat -- Script to install and update the configuration of Sysmon, originally written by Ryan Watson (\@gentlemanwatson) with some minor changes.
-  - Sysmonv7Config.xml -- The configuration file to be used with version 7 of Sysmon.
+  - Sysmon.exe -- *Standard Sysmon installer*
+  - Sysmon64.exe -- *64 bit Sysmon installer*
+  - SysmonStartup.bat -- *Script to install and update the configuration of Sysmon, originally written by Ryan Watson (\@gentlemanwatson) with some minor changes*
+  - Sysmonv7Config.xml -- *The configuration file to be used with version 7 of Sysmon*
 
 **The SysmonStartup.bat file will need to be edited so that the line "SET FQDN=" has the domain name as its value.**
 
 - Once the above has been completed, on a Domain Controller, open the Group Policy Management console, and create a new GPO named "Sysmon Deployment" and open it for editing. This first part of the GPO configuration will configure a startup script.
 
   Navigate to:
+  
   `Computer Configuration > Policies > Windows Settings > Scripts (Startup/Shutdown)`, right click on `Startup` and select `Properties`.
 
 
 ![GPO_config_9](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_9.png)
 
 
-- In the Startup Properties window, click on Add and then enter the full path to the SysmonStartup.bat file you copied to SYSVOL earlier in the Script Name field, then click OK until you are back to the main Group Policy Manager window to apply the configuration.
+- In the `Startup Properties` window, click on `Add` and then enter the full path to the `SysmonStartup.bat` file you copied to SYSVOL earlier in the `Script Name` field, then click `OK` until you are back to the main Group Policy Manager window to apply the configuration.
 
 
 ![GPO_config_10](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_10.png)
@@ -98,31 +99,32 @@ One of the easiest ways to deploy Sysmon is to use Group Policy to add a Startup
 - This next part of the configuration will create a scheduled task on the clients so they will pick up configuration changes in a timely fashion and also to ensure the Sysmon client is running.
 
   Navigate to:
-  `Computer Configuration \> Preferences \> Control Panel Settings \> Scheduled Tasks then right click and select New \> Scheduled Task (At least Windows 7).
+  
+  `Computer Configuration > Preferences > Control Panel Settings > Scheduled Tasks` then right click and select `New > Scheduled Task` (At least Windows 7).
 
 
 ![GPO_config_11](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_11.png)
 
 
-- On the General tab set the following values -- Action: Update, Name: SysMon Deployment, Security Options: NT AUTHORITY\\System & check 'Run whether user is logged on or not' radio button, Configure for: Windows 7.
+- On the `General` tab set the following values -- Action: Update, Name: SysMon Deployment, Security Options: NT AUTHORITY\\System & check 'Run whether user is logged on or not' radio button, Configure for: Windows 7.
 
 
 ![GPO_config_12](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_12.png)
 
 
-- On the Triggers tab set the following values -- Settings: Check the radio button for Daily and then for Start: Set an appropriate date and the time to 06:00:00. Advanced Settings: Check the box for 'Repeat task every' and set it to 1 hour for a duration of 12 hours and then check the box for Enabled.
+- On the `Triggers` tab set the following values -- Settings: Check the radio button for Daily and then for Start: Set an appropriate date and the time to 06:00:00. Advanced Settings: Check the box for 'Repeat task every' and set it to 1 hour for a duration of 12 hours and then check the box for Enabled.
 
 
 ![GPO_config_13](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_13.png)
 
 
-- On the Actions tab set the following values -- Action: Start a program, Settings: Enter the full UNC path for the SysmonStartup.bat file on the SYSVOL share.
+- On the `Actions` tab set the following values -- Action: Start a program, Settings: Enter the full UNC path for the SysmonStartup.bat file on the SYSVOL share.
 
 
 ![GPO_config_14](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_14.png)
 
 
-- On the Settings tab check the box for 'Allow task to be run on demand'.
+- On the `Settings` tab check the box for 'Allow task to be run on demand'.
 
 
 ![GPO_config_15](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_15.png)
