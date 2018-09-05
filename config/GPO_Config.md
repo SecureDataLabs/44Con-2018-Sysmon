@@ -1,7 +1,7 @@
-Group Policy Object (GPO) Configuration
+# Group Policy Object (GPO) Configuration
 =======================================
 
-**Windows Event Forwarding (WEF) GPO**
+## **Windows Event Forwarding (WEF) GPO**
 
 On a Domain Controller, open the Group Policy Management console, and create a new GPO named "WEF Policy" and open it for editing. This first part of the GPO defines where hosts should send their logs.
 
@@ -47,7 +47,8 @@ Navigate to Computer Configuration \> Policies \> Administrative Templates \> Wi
 
 ![GPO_config_8](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_8.png)
 
-**Sysmon Deployment/Configuration Update GPO**
+
+## **Sysmon Deployment/Configuration Update GPO**
 
 One of the easiest ways to deploy Sysmon is to use Group Policy to add a Startup Script, a Scheduled Task or a combination of both. This is achieved by staging the required installer, configuration and startup script files in a folder in the Domain SYSVOL folder, this ensures the files are readable by all users but can't be changed except by Domain Admins or users who have been given specific permissions.
 
@@ -61,7 +62,7 @@ SysmonStartup.bat -- Script to install and update the configuration of Sysmon, o
 
 Sysmonv7Config.xml -- The configuration file to be used with version 7 of Sysmon.
 
-**The SysmonStartup.bat file will need to be edited so that the line "SET FQDN=" has the domain name as its value.**
+## **The SysmonStartup.bat file will need to be edited so that the line "SET FQDN=" has the domain name as its value.**
 
 Once the above has been completed, on a Domain Controller, open the Group Policy Management console, and create a new GPO named "Sysmon Deployment" and open it for editing. This first part of the GPO configuration will configure a startup script.
 
@@ -95,7 +96,7 @@ On the Settings tab check the box for 'Allow task to be run on demand'.
 
 ![GPO_config_15](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_15.png)
 
-**Link GPO's**
+## **Link GPO's**
 
 In order to apply the settings to the clients the GPO's need to be linked to relevant OU's within Active Directory. To do this, in the left hand pane of the Group Policy Management console locate each OU you want to link the GPO's to and right click then select Link an Existing GPO, then select the GPO's from the list that appears.
 
