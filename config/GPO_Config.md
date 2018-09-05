@@ -109,13 +109,13 @@ One of the easiest ways to deploy Sysmon is to use Group Policy to add a Startup
 ![GPO_config_11](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_11.png)
 
 
-- On the `General` tab set the following values -- Action: Update, Name: SysMon Deployment, Security Options: NT AUTHORITY\\System & check 'Run whether user is logged on or not' radio button, Configure for: Windows 7.
+- On the `General` tab set the following values for `Action`: **Update**, `Name`: **SysMon Deployment**, `Security Options`: **NT AUTHORITY\\System** & check `Run whether user is logged on or not` button, `Configure for`: **Windows 7**.
 
 
 ![GPO_config_12](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_12.png)
 
 
-- On the `Triggers` tab set the following values -- Settings: Check the radio button for Daily and then for Start: Set an appropriate date and the time to 06:00:00. Advanced Settings: Check the box for 'Repeat task every' and set it to 1 hour for a duration of 12 hours and then check the box for Enabled.
+- On the `Triggers` tab set the following values under `Settings`: Check the button for `Daily` and then for `Start`: Set an appropriate date and the time to `06:00:00`. `Advanced Settings`: Check the box for `Repeat task every` and set it to `1 hour` for a duration of `12 hours` and then check the box for `Enabled`.
 
 
 ![GPO_config_13](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_13.png)
