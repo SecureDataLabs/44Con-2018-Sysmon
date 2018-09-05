@@ -101,19 +101,3 @@ In order to apply the settings to the clients the GPO's need to be linked to rel
 
 ![GPO_config_16](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_16.png)
 
-  [1]: media/image1.jpg {width="5.642392825896763in" height="4.242108486439195in"}
-  [2]: media/image2.jpg {width="5.68658573928259in" height="4.275334645669291in"}
-  [3]: media/image3.jpg {width="5.684332895888014in" height="2.4989413823272093in"}
-  [4]: media/image4.jpg {width="5.692342519685039in" height="4.279663167104112in"}
-  [5]: media/image5.jpg {width="5.672241907261593in" height="4.2645516185476815in"}
-  [6]: media/image6.jpg {width="5.672241907261593in" height="4.2645516185476815in"}
-  [7]: media/image7.jpg {width="5.642392825896763in" height="4.242108486439195in"}
-  [8]: media/image8.jpg {width="5.62746719160105in" height="3.5681364829396327in"}
-  [9]: media/image9.jpg {width="5.612541557305337in" height="3.8086439195100614in"}
-  [10]: media/image10.jpg {width="6.268055555555556in" height="4.253472222222222in"}
-  [11]: media/image11.jpg {width="5.62746719160105in" height="3.818772965879265in"}
-  [12]: media/image12.jpg {width="5.657318460192476in" height="3.839031058617673in"}
-  [13]: media/image13.jpg {width="5.62746719160105in" height="3.818772965879265in"}
-  [14]: media/image14.jpg {width="5.642392825896763in" height="3.828902012248469in"}
-  [15]: media/image15.jpg {width="5.619949693788277in" height="3.9089348206474193in"}
-  [16]: media/image16.jpg {width="5.591045494313211in" height="3.945295275590551in"}
