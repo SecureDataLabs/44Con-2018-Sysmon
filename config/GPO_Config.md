@@ -7,7 +7,7 @@ On a Domain Controller, open the Group Policy Management console, and create a n
 
 Navigate to Computer Configuration \> Policies \> Administrative Templates \> Windows Components \> Event Forwarding
 
-![GPO_config_1](44Con-2018-Sysmon/config/images/GPO_config_1.png)
+![GPO_config_1](https://github.com/SecureDataLabs/44Con-2018-Sysmon/blob/Rustycoin/config/images/GPO_config_1.png)
 
 Right click on the Configure target Subscription Manager entry and select Edit. Select the Enabled radio button and "Show" next to Subscription Managers in the Options pane.
 
