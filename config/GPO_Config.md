@@ -28,6 +28,7 @@
 - Click `OK` until you are back to the main Group Policy Manager window to apply the configuration. Next we will need to enable the `Windows Remote Management (WS-Management)` Service on the hosts.
 
   Navigate to:
+  
   `Computer Configuration > Windows Settings > Security Settings > System Services` and right-click the `Windows Remote Management (WS-Management)` service and select `Properties`. Check the box for `Define this policy setting` and set `Select service startup mode = Automatic` then click `OK` to apply the change.
 
 
@@ -37,6 +38,7 @@
 - Now we need to allow event log reader access for the Network Service account which will permit Windows RM to read and send logs.
 
   Navigate to:
+  
   `Computer Configuration > Policies > Windows Settings > Restricted Groups`. Right-click within the window and select `Add Group...`.
 
 
@@ -60,6 +62,7 @@
 - The final requirement is to allow `Remote Server Management Through WinRM`.
 
   Navigate to:
+  
   `Computer Configuration > Policies > Administrative Templates > Windows Components > Windows Remote Management (WinRM) > WinRMService`. Right click on `Allow Remote Server Management through WinRM` and select `Edit`. Check the `Enabled` button and set the value of IPv4 Filter & IPv6 Filter as `*`.
 
 
@@ -71,7 +74,7 @@
 
 One of the easiest ways to deploy Sysmon is to use Group Policy to add a Startup Script, a Scheduled Task or a combination of both. This is achieved by staging the required installer, configuration and startup script files in a folder in the Domain SYSVOL folder, this ensures the files are readable by all users but can't be changed except by Domain Admins or users who have been given specific permissions.
 
-- The first step is to create a folder called **"Sysmon"** in replacing \<FQDN\> with your domain name. Then copy the 4 files below into that folder.
+- The first step is to create a folder called **"Sysmon"** in replacing `\<FQDN>\` with your domain name. Then copy the 4 files below into that folder.
 
   - Sysmon.exe -- *Standard Sysmon installer*
   - Sysmon64.exe -- *64 bit Sysmon installer*
