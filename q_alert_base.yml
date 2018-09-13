@@ -1,0 +1,15 @@
+name: ExampleNewRule
+type: any
+index: winlogbeat-*
+realert:
+ minutes: 0
+filter:
+  - query:
+       query_string:
+         query: "event_id: 3"
+
+alert:
+- slack
+slack_webhook_url: "https://hooks.slack.com/services/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"
+slack_channel_override: "#labalerts"
+slack_username_override: "@Bot44"
