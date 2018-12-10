@@ -10,6 +10,6 @@ filter:
 
 alert:
 - slack
-slack_webhook_url: "https://hooks.slack.com/services/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"
+slack_webhook_url: "<slack-url-hook>"
 slack_channel_override: "#labalerts"
 slack_username_override: "@Bot44"
